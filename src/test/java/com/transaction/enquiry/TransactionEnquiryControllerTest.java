@@ -44,7 +44,7 @@ public class TransactionEnquiryControllerTest {
 
 		when(service.getTransactionsForAccount(12345678L)).thenReturn(transactions);
 
-		ResponseEntity<List<Transaction>> response = controller.getAllTransactionsForAccount("12345678");
+		ResponseEntity<List<Transaction>> response = controller.getAllTransactionsForAccount(12345678L);
 
 		assertNotNull(response);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -60,15 +60,10 @@ public class TransactionEnquiryControllerTest {
 
 		when(service.getTransactionsForAccount(12345678L)).thenReturn(transactions);
 
-		ResponseEntity<List<Transaction>> response = controller.getAllTransactionsForAccount("12345678");
+		ResponseEntity<List<Transaction>> response = controller.getAllTransactionsForAccount(12345678L);
 
 		assertNotNull(response);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
 		assertNull(response.getBody());
-	}
-
-	@Test(expected = NumberFormatException.class)
-	public void testFailure() {
-		controller.getAllTransactionsForAccount("12345LG");
 	}
 }

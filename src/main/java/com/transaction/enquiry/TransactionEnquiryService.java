@@ -10,6 +10,13 @@ import org.springframework.stereotype.Service;
 import com.transaction.enquiry.model.Transaction;
 import com.transaction.enquiry.repository.TransactionRepository;
 
+/**
+ * @author arun.balasubramanian
+ * 
+ * Service Class that supports the TransactionEnquiryController in providing the TransactionEnquiry as a service,
+ * has methods to fetch the transaction data from database. Any necessary business logic/manipulation that need to
+ * happen on the data can be defined here. 
+ */
 @Service
 public class TransactionEnquiryService implements ITransactionEnquiryService {
 	
@@ -18,6 +25,10 @@ public class TransactionEnquiryService implements ITransactionEnquiryService {
 	@Autowired
 	private TransactionRepository repository;
 
+	/**
+	 * Method fetches all the transactions for an accountNumber using JPA repositories.
+	 * Paging has not yet been implemented. 
+	 */
 	@Override
 	public List<Transaction> getTransactionsForAccount(Long accountNumber) {
 		log.debug("Get Transactions for accounts : {}", accountNumber);
