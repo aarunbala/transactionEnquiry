@@ -1,5 +1,6 @@
 package com.transaction.enquiry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -28,11 +29,15 @@ public class TransactionEnquiryService implements ITransactionEnquiryService {
 	/**
 	 * Method fetches all the transactions for an accountNumber using JPA repositories.
 	 * Paging has not yet been implemented. 
+	 * 
+	 * @param accountNumber
 	 */
 	@Override
 	public List<Transaction> getTransactionsForAccount(Long accountNumber) {
-		log.debug("Get Transactions for accounts : {}", accountNumber);
-		return repository.findAllByAccountNumber(accountNumber);
+		log.debug("Start of Function: Get Transactions for accounts : {}", accountNumber);
+		List<Transaction> transactions = repository.findAllByAccountNumber(accountNumber); 
+		log.debug("Exiting Function");
+		return transactions != null ? transactions : new ArrayList<Transaction>();
 	}
 
 }

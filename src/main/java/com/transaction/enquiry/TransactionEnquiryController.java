@@ -37,7 +37,7 @@ public class TransactionEnquiryController {
 	@GetMapping(path = "/transactionEnquiry/{accountNumber}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Transaction>> getAllTransactionsForAccount(@PathVariable Long accountNumber) {
 		
-		log.info("Get transactions for Account : {}", accountNumber);
+		log.info("Start of Function: Get transactions for Account : {}", accountNumber);
 		
 		List<Transaction> transactions = service.getTransactionsForAccount(accountNumber);
 		ResponseEntity<List<Transaction>> response = new ResponseEntity<>(transactions, HttpStatus.OK);
@@ -46,6 +46,7 @@ public class TransactionEnquiryController {
 		if(transactions == null || transactions.isEmpty()) {
 			response = new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
+		log.debug("Exiting Function");
 		return response;
 	}
 	

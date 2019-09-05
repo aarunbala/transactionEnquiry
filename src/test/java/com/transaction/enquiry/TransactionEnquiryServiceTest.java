@@ -32,6 +32,9 @@ public class TransactionEnquiryServiceTest {
 	@Autowired
 	private TransactionEnquiryService service;
 
+	/**
+	 * Method tests the successful response from the method getTransactionsForAccount
+	 */
 	@Test
 	public void testGetAllTransactionsForAccount() {
 		Transaction transaction = new Transaction();

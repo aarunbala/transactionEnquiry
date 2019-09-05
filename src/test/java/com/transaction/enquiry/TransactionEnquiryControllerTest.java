@@ -34,6 +34,9 @@ public class TransactionEnquiryControllerTest {
 	@Autowired
 	private TransactionEnquiryController controller;
 
+	/**
+	 * Method tests the Method getAllTransactionsForAccount for a Success scenario 200 by passing a valid account number.
+	 */
 	@Test
 	public void testSuccess200() {
 		Transaction transaction = new Transaction();
@@ -54,6 +57,10 @@ public class TransactionEnquiryControllerTest {
 		assertThat(actualResponse.get(0).getAmount()).isEqualTo(new BigDecimal(9898.01));
 	}
 
+	/**
+	 * Method test the Method getAllTransactionsForAccount for a Scenario with NoContent response by passing an 
+	 * account number that's not in the database(achieved by mocking).
+	 */
 	@Test
 	public void testSuccess201() {
 		List<Transaction> transactions = new ArrayList<>();
